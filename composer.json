@@ -1,0 +1,34 @@
+{
+  "name": "gfargo/newsapi",
+  "description": "PHP API wrapper for NewsAPI.org",
+  "type": "library",
+  "keywords": [
+    "php",
+    "api",
+    "wrapper",
+    "newsapi",
+    "news"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Griffen Fargo",
+      "email": "griffen@alley.co"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "GFargo\\NewsAPI\\": "src/"
+    }
+  },
+  "require": {
+    "rmccue/requests": "^1.7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.*"
+  }
+}

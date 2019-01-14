@@ -1,0 +1,22 @@
+{
+  "name": "newsapi",
+  "version": "0.0.1",
+  "description": "PHP API wrapper for NewsAPI.org. NPM automates Github releases.",
+  "scripts": {
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfargo/newsapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfargo/newsapi/issues"
+  },
+  "homepage": "https://github.com/gfargo/newsapi#readme",
+  "devDependencies": {
+    "release-it": "^7.4.7"
+  }
+}
