@@ -10,7 +10,7 @@
 
 
 [![travis-build](https://img.shields.io/travis/GFargo/newsapi.svg?style=flat&logo=travis)](https://travis-ci.org/GFargo/newsapi)
-
+[![codecov](https://codecov.io/gh/GFargo/newsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/GFargo/newsapi)
 
 </div>
 
