@@ -1,14 +1,12 @@
 <?php
 /**
- * NewsAPI Test Class
+ * API Test Class
  *
  * @author griffenfargo
  * @package NewsAPI
  */
 
-namespace GFargo\NewsAPI\Tests;
-
-use GFargo\NewsAPI\API;
+namespace NewsAPI\Tests;
 
 /**
  *  Corresponding Class to test YourClass class
@@ -18,11 +16,11 @@ use GFargo\NewsAPI\API;
  *
  * @author yourname
  */
-class NewsAPITest extends \PHPUnit\Framework\TestCase {
+class APITest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Instance of News API wrapper.
 	 *
-	 * @var API
+	 * @var \NewsAPI\API
 	 */
 	protected $news_api;
 
@@ -39,30 +37,38 @@ class NewsAPITest extends \PHPUnit\Framework\TestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
-		$this->news_api = new API( $this->test_key );
+		$this->news_api = new \NewsAPI\API( $this->test_key );
 	}
 
 	/**
-	 * Test that initializing API without valid key parameter throws exception.
+	 * Ensure library dependencies are available.
 	 */
-	public function testForExceptionWhenInitializingWithoutAPIKey() {
-		$this->expectException( \ArgumentCountError::class );
-		$api = new API();
-		unset( $api );
+	public function testRequestsLib_ShouldExist_WhenDependenciesLoaded() {
+		$this->assertTrue( class_exists( 'Requests' ) );
+		$this->assertTrue( class_exists( 'Requests_Response' ) );
 	}
 
 	/**
 	 * Test if we can initialize the API wrapper without issue.
 	 */
-	public function testForSyntaxError() {
+	public function testSetup_ShouldBeInstanceOfAPIClass_WhenInitializedCorrectly() {
 		$this->assertTrue( is_object( $this->news_api ) );
-		$this->assertTrue( $this->news_api instanceof API );
+		$this->assertTrue( $this->news_api instanceof \NewsAPI\API );
+	}
+
+	/**
+	 * Test that initializing API without valid key parameter throws exception.
+	 */
+	public function testSetup_ShouldThrowException_WhenNoAPIKeyPassed() {
+		$this->expectException( \ArgumentCountError::class );
+		$api = new \NewsAPI\API();
+		unset( $api );
 	}
 
 	/**
 	 * Test headers array contain API key.
 	 */
-	public function testForAPIKeyInHeaders() {
+	public function testHeaders_ShouldIncludeAPIKey_WhenInitializedCorrectly() {
 		$headers = $this->news_api->headers;
 		$this->assertArrayHasKey( 'x-api-key', $headers );
 		$this->assertEquals( $this->test_key, $headers['x-api-key'] );
@@ -72,7 +78,7 @@ class NewsAPITest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test if we can initialize the API wrapper without issue.
 	 */
-	public function testForValidEndpoints() {
+	public function testGetEndpoints_ShouldContainValidEndpoints_WhenCheckedAfterInit() {
 		$endpoints = $this->news_api->getEndpoints();
 		$this->assertArrayHasKey( 'top', $endpoints );
 		$this->assertArrayHasKey( 'everything', $endpoints );
@@ -83,24 +89,16 @@ class NewsAPITest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test that querying for invalid endpoint throws exception.
 	 */
-	public function testInValidEndpoint() {
+	public function testBuildRequestUrl_ShouldThrowException_WhenPassedInvalidEndpoint() {
 		$this->expectException( \Exception::class );
 		$response = $this->news_api->buildRequestUrl( 'bad_endpoint', [] );
 		unset( $response );
 	}
 
 	/**
-	 * Ensure request library provided by composer is available.
-	 */
-	public function testRequestsLibrary() {
-		$this->assertTrue( class_exists( 'Requests' ) );
-		$this->assertTrue( class_exists( 'Requests_Response' ) );
-	}
-
-	/**
 	 * Test if request URL is being properly constructed.
 	 */
-	public function testQueryUrlGeneration() {
+	public function testBuildRequestUrl_ShouldMatchExpected_WhenUsingSameParameters() {
 		// Top business headlines from Germany.
 		$expected_url  = 'https://newsapi.org/v2/top-headlines?country=de&category=business';
 		$generated_url = $this->news_api->buildRequestUrl(

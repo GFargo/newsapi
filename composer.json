@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GFargo\\NewsAPI\\": "src/"
+      "NewsAPI\\": "src/"
     }
   },
   "require": {

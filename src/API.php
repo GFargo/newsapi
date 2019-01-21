@@ -6,7 +6,7 @@
  * @package NewsAPI
  */
 
-namespace GFargo\NewsAPI;
+namespace NewsAPI;
 
 class API {
 	/**
