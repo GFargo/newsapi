@@ -28,7 +28,7 @@ cache:
 install:
   # Setup the test server
   - phpenv local $( phpenv versions | grep 5.6 | tail -1 )
-  - composer install --dev --no-interaction
+  - composer install --no-interaction
   - TESTPHPBIN=$(phpenv which php)
   - phpenv local --unset
 
