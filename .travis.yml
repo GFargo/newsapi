@@ -3,7 +3,6 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
     - php: 7.1
     - php: 7.2
     - php: nightly
@@ -21,9 +20,8 @@ cache:
 
 install:
   # Setup the test server
-  - phpenv local $( phpenv versions | grep 5.6 | tail -1 )
   - composer install --no-interaction
-  - TESTPHPBIN=$(phpenv which php)
+#  - TESTPHPBIN=$(phpenv which php)
   - phpenv local --unset
 
   # Environment checks
