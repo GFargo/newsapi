@@ -7,6 +7,11 @@
 
 <p>🗞 PHP API wrapper for NewsAPI.org</p>
 
+
+
+[![travis-build](https://img.shields.io/travis/GFargo/newsapi.svg?style=flat&logo=travis)](https://travis-ci.org/GFargo/newsapi)
+
+
 </div>
 
 ## Getting Started
