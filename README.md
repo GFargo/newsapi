@@ -1,9 +1,6 @@
-# newsapi
-
-
 <div align="center">
 
-<img align="center" src="https://i.imgur.com/BF5u3Ol.png" />
+<img align="center" width="365" src="https://i.imgur.com/BF5u3Ol.png" />
 
 <p>🗞 PHP API wrapper for NewsAPI.org</p>
 
