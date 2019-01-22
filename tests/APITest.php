@@ -37,7 +37,7 @@ class APITest extends \PHPUnit\Framework\TestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
-		$this->news_api = new \NewsAPI\API( $this->test_key );
+		\NewsAPI\Client::set_access_token( $this->test_key );
 	}
 
 	/**
@@ -52,24 +52,31 @@ class APITest extends \PHPUnit\Framework\TestCase {
 	 * Test if we can initialize the API wrapper without issue.
 	 */
 	public function testSetup_ShouldBeInstanceOfAPIClass_WhenInitializedCorrectly() {
-		$this->assertTrue( is_object( $this->news_api ) );
-		$this->assertTrue( $this->news_api instanceof \NewsAPI\API );
+		$this->assertTrue( is_object( \NewsAPI\Client::get_adapter() ) );
+		$this->assertTrue( \NewsAPI\Client::get_adapter() instanceof \NewsAPI\Interfaces\RemoteTrait );
 	}
 
 	/**
 	 * Test that initializing API without valid key parameter throws exception.
+	 * @TODO Refactor.
 	 */
-	public function testSetup_ShouldThrowException_WhenNoAPIKeyPassed() {
+	public function Setup_ShouldThrowException_WhenNoAPIKeyPassed() {
+		// Remove access token.
+		\NewsAPI\Client::set_access_token( false );
+
 		$this->expectException( \ArgumentCountError::class );
-		$api = new \NewsAPI\API();
+		$api = \NewsAPI\Client::get_adapter();
 		unset( $api );
+
+		// Reset access token.
+		\NewsAPI\Client::set_access_token( $this->test_key );
 	}
 
 	/**
 	 * Test headers array contain API key.
 	 */
 	public function testHeaders_ShouldIncludeAPIKey_WhenInitializedCorrectly() {
-		$headers = $this->news_api->headers;
+		$headers = \NewsAPI\Client::get_adapter()->headers;
 		$this->assertArrayHasKey( 'x-api-key', $headers );
 		$this->assertEquals( $this->test_key, $headers['x-api-key'] );
 		unset( $headers );
