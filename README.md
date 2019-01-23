@@ -8,6 +8,7 @@
 
 [![travis-build](https://img.shields.io/travis/GFargo/newsapi.svg?style=flat&logo=travis)](https://travis-ci.org/GFargo/newsapi)
 [![codecov](https://codecov.io/gh/GFargo/newsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/GFargo/newsapi)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6f4ab131730644e5bb64abef86c75c08)](https://www.codacy.com/app/GFargo/newsapi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=GFargo/newsapi&amp;utm_campaign=Badge_Grade)
 
 </div>
 
