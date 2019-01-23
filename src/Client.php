@@ -8,8 +8,6 @@
 
 namespace NewsAPI;
 
-use NewsAPI\Interfaces\RemoteInterface;
-
 final class Client {
 	/**
 	 * Controls what version of API is used.
@@ -37,10 +35,10 @@ final class Client {
 	/**
 	 * Returns Instance of API Adapter.
 	 *
-	 * @return RemoteInterface
+	 * @return RemoteAPI
 	 * @throws \Exception
 	 */
-	public static function get_adapter(): RemoteInterface {
+	public static function get_adapter(): RemoteAPI {
 		// Bail if empty.
 		if ( empty( self::$api_token ) ) {
 			throw new \Exception( 'The API access token hasn\'t been set. Register your API access token via the `set_access_token` method. If you do not have an access token, one can be created at https://newsapi.org/account', 1 );

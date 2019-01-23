@@ -39,7 +39,7 @@ trait RemoteEndpoints {
 	/**
 	 * @param array $endpoints
 	 */
-	private function setEndpoints( array $endpoints ): void {
+	protected function setEndpoints( array $endpoints ): void {
 		$this->endpoints = array_merge( $this->endpoints, $endpoints );
 	}
 }

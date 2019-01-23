@@ -8,11 +8,10 @@
 
 namespace NewsAPI\V2;
 
-class Adapter implements \NewsAPI\Interfaces\RemoteInterface {
-	use \NewsAPI\Traits\RemoteEndpoints;
-	use \NewsAPI\Traits\RemoteHeaders;
-
+class Adapter extends \NewsAPI\RemoteAPI {
 	/**
+	 * API key provided by NewsAPI.org
+	 *
 	 * @var string|null
 	 */
 	private $access_token;
