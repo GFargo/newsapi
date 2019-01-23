@@ -63,7 +63,7 @@ class Adapter extends \NewsAPI\RemoteAPI {
 		$valid_endpoints = array_keys( $this->getEndpoints() );
 
 		if ( empty( $endpoint ) || ! in_array( $endpoint, $valid_endpoints ) ) {
-			throw new \Exception( sprintf( 'Invalid endpoint. Possible options are %s', implode( ', ', $valid_endpoints ) ), 1 );
+			throw new \Exception( sprintf( 'Invalid endpoint. Valid options are "%s"', implode( '", "', $valid_endpoints ) ), 1 );
 		}
 
 		$http_query_url = http_build_query( $query_params );

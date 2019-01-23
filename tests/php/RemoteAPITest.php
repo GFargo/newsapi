@@ -76,7 +76,7 @@ class RemoteAPITest extends TestCase {
 		], $this->test_class->getEndpoints() );
 	}
 
-	public function testQuery_ShouldReturnRequestResponse() {
+	public function testQuery_ShouldReturnRequestResponseObject() {
 		$response = $this->test_class->query( '', [], [] );
 		$this->assertTrue( $response instanceof \Requests_Response );
 	}

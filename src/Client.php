@@ -24,6 +24,13 @@ final class Client {
 	protected static $api_token;
 
 	/**
+	 * This is a static class, do not instantiate it
+	 *
+	 * @codeCoverageIgnore
+	 */
+	private function __construct() {}
+
+	/**
 	 * Register personal API access token.
 	 *
 	 * @param string $api_token
@@ -74,6 +81,6 @@ final class Client {
 	 * @return \Requests_Response Response object from from API request.
 	 */
 	public static function query( string $endpoint, array $query_params = [], array $request_options = [] ) {
-		return self::get_adapter()->query( $endpoint, $query_params, $request_options );
+		return self::getAdapter()->query( $endpoint, $query_params, $request_options );
 	}
 }

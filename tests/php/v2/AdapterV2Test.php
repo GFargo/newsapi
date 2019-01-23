@@ -161,11 +161,17 @@ class AdapterV2Test extends TestCase {
 		unset( $expected_url, $generated_url );
 	}
 
-//	public function testBuildRequestUrl() {
-//
-//	}
+	public function testQuery_ShouldReturnRequestResponseObject() {
+		$transport = new \NewsAPIMockTransport();
+		$transport->code = 200;
 
-//	public function testQuery() {
-//
-//	}
+		$response = $this->adapter->query('everything', [], [
+			'transport' => $transport
+		]);
+
+		$this->assertEquals(200, $response->status_code);
+		$this->assertEquals(0, $response->redirects);
+		$this->assertTrue( is_object( $response ) );
+		$this->assertTrue( $response instanceof \Requests_Response );
+	}
 }
