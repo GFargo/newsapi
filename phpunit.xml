@@ -1,12 +1,28 @@
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit bootstrap="tests/php/bootstrap.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          stopOnFailure="true">
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>tests</directory>
+        <testsuite name="General">
+            <file>tests/php/ClientTest.php</file>
+            <file>tests/php/DependencyTest.php</file>
+            <file>tests/php/RemoteAPITest.php</file>
+        </testsuite>
+
+        <testsuite name="V2 Adapter">
+            <directory suffix=".php">tests/php/v2</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
