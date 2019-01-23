@@ -53,7 +53,7 @@ class APITest extends \PHPUnit\Framework\TestCase {
 	 */
 	public function testSetup_ShouldBeInstanceOfAPIClass_WhenInitializedCorrectly() {
 		$this->assertTrue( is_object( \NewsAPI\Client::get_adapter() ) );
-		$this->assertTrue( \NewsAPI\Client::get_adapter() instanceof \NewsAPI\Interfaces\RemoteTrait );
+		$this->assertTrue( \NewsAPI\Client::get_adapter() instanceof \NewsAPI\RemoteAPI );
 	}
 
 	/**
@@ -76,9 +76,11 @@ class APITest extends \PHPUnit\Framework\TestCase {
 	 * Test headers array contain API key.
 	 */
 	public function testHeaders_ShouldIncludeAPIKey_WhenInitializedCorrectly() {
-		$headers = \NewsAPI\Client::get_adapter()->headers;
+		$headers = \NewsAPI\Client::get_adapter()->getHeaders();
+
 		$this->assertArrayHasKey( 'x-api-key', $headers );
 		$this->assertEquals( $this->test_key, $headers['x-api-key'] );
+
 		unset( $headers );
 	}
 
@@ -86,17 +88,20 @@ class APITest extends \PHPUnit\Framework\TestCase {
 	 * Test if we can initialize the API wrapper without issue.
 	 */
 	public function testGetEndpoints_ShouldContainValidEndpoints_WhenCheckedAfterInit() {
-		$endpoints = $this->news_api->getEndpoints();
+		$endpoints = \NewsAPI\Client::get_adapter()->getEndpoints();
+
 		$this->assertArrayHasKey( 'top', $endpoints );
 		$this->assertArrayHasKey( 'everything', $endpoints );
 		$this->assertArrayHasKey( 'sources', $endpoints );
+
 		unset( $endpoints );
 	}
 
 	/**
 	 * Test that querying for invalid endpoint throws exception.
+	 * @TODO Refactor.
 	 */
-	public function testBuildRequestUrl_ShouldThrowException_WhenPassedInvalidEndpoint() {
+	public function BuildRequestUrl_ShouldThrowException_WhenPassedInvalidEndpoint() {
 		$this->expectException( \Exception::class );
 		$response = $this->news_api->buildRequestUrl( 'bad_endpoint', [] );
 		unset( $response );
@@ -104,8 +109,9 @@ class APITest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * Test if request URL is being properly constructed.
+	 * @TODO Refactor.
 	 */
-	public function testBuildRequestUrl_ShouldMatchExpected_WhenUsingSameParameters() {
+	public function BuildRequestUrl_ShouldMatchExpected_WhenUsingSameParameters() {
 		// Top business headlines from Germany.
 		$expected_url  = 'https://newsapi.org/v2/top-headlines?country=de&category=business';
 		$generated_url = $this->news_api->buildRequestUrl(
