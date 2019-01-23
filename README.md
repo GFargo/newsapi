@@ -1,6 +1,6 @@
 <div align="center">
 
-<img align="center" width="365" src="https://i.imgur.com/BF5u3Ol.png" />
+<img align="center" width="365" src="https://i.imgur.com/JvQ5Kd4.png" />
 
 <p>🗞 PHP API wrapper for NewsAPI.org</p>
 
@@ -30,7 +30,7 @@ composer require gfargo/newsapi
 
 ### Dependencies
 
-The NewsAPI PHP wrapper utilizes the [Requests](https://github.com/rmccue/requests) library from Ryan McCue.  Official website/docs can be found [here](http://requests.ryanmccue.info/)   .
+This wrapper utilizes the [Requests](https://github.com/rmccue/requests) library from Ryan McCue.  Official website/docs can be found [here](http://requests.ryanmccue.info/)   .
 
 
 
@@ -46,9 +46,29 @@ Once included in your project, setup should be very straightforward.  Only requi
 
 ## Usage
 
-All requests to the API are done using the `query` method.   
+#### Step 1. Set API Access Token 
 
+```php
+\NewsAPI\Client::setAccessToken('276537c6a3824cdd9eae393c024ff732');
+```
 
+#### Step 2. Query API
+
+All requests to the API are made via the `query` method.   
+
+```php
+$response = \NewsAPI\Client::query( 
+    'everything', 
+    [
+        'q'        => 'Protest',
+        'language' => 'en',
+        'to' => '2019-01-10',
+        'pageSize' => 5
+    ]
+);
+```
+
+#### Step 3. Response
 
 ## Response
 
