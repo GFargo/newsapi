@@ -82,7 +82,7 @@ class Adapter extends \NewsAPI\RemoteAPI {
 	 *
 	 * @return \Requests_Response Response object from from API request.
 	 */
-	public function query( string $endpoint, array $query_params = [], array $request_options = [] ) {
+	public function query( string $endpoint, array $query_params = [], array $request_options = [] ) : \Requests_Response {
 		$request_url = $this->buildRequestUrl( $endpoint, $query_params );
 		$response    = \Requests::get( $request_url, $this->getHeaders() , $request_options );
 

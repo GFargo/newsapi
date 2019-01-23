@@ -17,19 +17,27 @@ final class Client {
 	public static $api_version = 'V2';
 
 	/**
-	 * Private Access Token used in API requests.
+	 * API access token used in requests.
 	 *
 	 * @var string
 	 */
 	protected static $api_token;
 
 	/**
-	 * Register Personal API Access Token.
+	 * Register personal API access token.
 	 *
 	 * @param string $api_token
 	 */
-	public static function set_access_token( string $api_token ) {
+	public static function setAccessToken( string $api_token ) {
 		self::$api_token = $api_token;
+	}
+
+	/**
+	 * Check if API access token is valid.
+	 * @return bool
+	 */
+	public static function isAccessTokenValid() {
+		return ! empty( self::$api_token ) && is_string( self::$api_token );
 	}
 
 	/**
@@ -38,10 +46,10 @@ final class Client {
 	 * @return RemoteAPI
 	 * @throws \Exception
 	 */
-	public static function get_adapter(): RemoteAPI {
+	public static function getAdapter(): RemoteAPI {
 		// Bail if empty.
-		if ( empty( self::$api_token ) ) {
-			throw new \Exception( 'The API access token hasn\'t been set. Register your API access token via the `set_access_token` method. If you do not have an access token, one can be created at https://newsapi.org/account', 1 );
+		if ( ! self::isAccessTokenValid() ) {
+			throw new \Exception( 'The API access token hasn\'t been set properly. Register your API access token via the `set_access_token` method. If you do not have an access token, one can be created at https://newsapi.org/account', 1 );
 		}
 
 		static $adapter = null;

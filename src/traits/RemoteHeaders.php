@@ -2,8 +2,8 @@
 /**
  * @TODO    : File Desc.
  *
- * @author  griffenfargo
- * @package php-test
+ * @author  gfargo
+ * @package NewsAPI
  */
 
 namespace NewsAPI\Traits;
