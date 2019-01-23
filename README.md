@@ -1,6 +1,6 @@
 <div align="center">
 
-<img align="center" width="365" src="https://i.imgur.com/JvQ5Kd4.png" />
+<img align="center" width="365" src="https://i.imgur.com/hU3gENb.png" />
 
 <p>🗞 PHP API wrapper for NewsAPI.org</p>
 
