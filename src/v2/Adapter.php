@@ -2,7 +2,7 @@
 /**
  * NewsAPI PHP Wrapper
  *
- * @author gfargo
+ * @author  gfargo
  * @package NewsAPI
  */
 
@@ -74,17 +74,17 @@ class Adapter extends \NewsAPI\RemoteAPI {
 	/**
 	 * Query API for Results.
 	 *
-	 * @param string $endpoint
-	 * @param array  $query_params
-	 * @param array  $request_options
+	 * @param string $endpoint        Slug of target API endpoint.  Options are 'top', 'everything', and 'sources'.
+	 * @param array  $query_params    Query parameters passed to NewsAPI.org
+	 * @param array  $request_options Options passed to Requests library to control CURL.
 	 *
 	 * @throws \Exception
 	 *
 	 * @return \Requests_Response Response object from from API request.
 	 */
-	public function query( string $endpoint, array $query_params = [], array $request_options = [] ) : \Requests_Response {
+	public function query( string $endpoint, array $query_params = [], array $request_options = [] ): \Requests_Response {
 		$request_url = $this->buildRequestUrl( $endpoint, $query_params );
-		$response    = \Requests::get( $request_url, $this->getHeaders() , $request_options );
+		$response    = \Requests::get( $request_url, $this->getHeaders(), $request_options );
 
 		return $response;
 	}

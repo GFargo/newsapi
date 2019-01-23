@@ -1,6 +1,6 @@
 <?php
 /**
- * @TODO    : File Desc.
+ * Interface for Remote API Headers
  *
  * @author  gfargo
  * @package NewsAPI

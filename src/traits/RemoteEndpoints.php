@@ -1,6 +1,6 @@
 <?php
 /**
- * Remote API Interface Class
+ * Interface for Remote API Endpoints
  *
  * @author  gfargo
  * @package NewsAPI

@@ -13,5 +13,5 @@ abstract class RemoteAPI {
 	use Traits\RemoteEndpoints;
 	use Traits\RemoteHeaders;
 
-	abstract function query( string $endpoint, array $api_params = [], array $request_options = [] ) : \Requests_Response;
+	abstract function query( string $endpoint, array $api_params = [], array $request_options = [] ): \Requests_Response;
 }

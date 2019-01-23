@@ -28,7 +28,8 @@ final class Client {
 	 *
 	 * @codeCoverageIgnore
 	 */
-	private function __construct() {}
+	private function __construct() {
+	}
 
 	/**
 	 * Register personal API access token.
@@ -63,7 +64,7 @@ final class Client {
 
 		if ( null === $adapter ) {
 			$adapter_version = __NAMESPACE__ . '\\' . self::$api_version . '\\Adapter';
-			$adapter = new $adapter_version( self::$api_token );
+			$adapter         = new $adapter_version( self::$api_token );
 		}
 
 		return $adapter;
