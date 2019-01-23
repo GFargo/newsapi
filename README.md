@@ -2,7 +2,7 @@
 
 <img align="center" width="365" src="https://i.imgur.com/hU3gENb.png" />
 
-<p>🗞 PHP API wrapper for NewsAPI.org</p>
+<p>🗞 PHP API wrapper for <a target="_blank" href="https://newsapi.org">NewsAPI.org<a></p>
 
 
 
