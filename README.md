@@ -29,7 +29,6 @@ This wrapper utilizes the [Requests](https://github.com/rmccue/requests) library
 
 Once included in your project, setup should be very straightforward.  Only requirement is a valid API key provided by [NewsAPI.org](NewsAPI.org/account/).
 
-
 ## Usage
 
 ### Step 1. Set Access Token 
@@ -44,10 +43,9 @@ Making requests to the API is done via `query` method, which accepts three param
 
 **`Query` parameters:**
 
-* `(string) $endpoint` Target endpoint. Options are `top`, `everything`, and `sources`.
-* `(array) $query_params` Query parameters passed to NewsAPI.org
-* `(array) $request_options` Options passed to Requests library to control CURL.
-
+  * `(string) $endpoint` Target endpoint. Options are `top`, `everything`, and `sources`.
+  * `(array) $query_params` Query parameters passed to NewsAPI.org
+  * `(array) $request_options` Options passed to Requests library to control CURL.
 
 **Examples:** 
 
@@ -81,8 +79,6 @@ $request->url                     // string(54) "https://newsapi.org/v2/top-head
 $request->body                    // string(14385) "{...}"
 ```
 
-
 ## Change log
 
 > [Automated release notes can be found here →](https://github.com/gfargo/newsapi/releases)
-
