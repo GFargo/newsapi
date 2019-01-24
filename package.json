@@ -1,6 +1,6 @@
 {
   "name": "newsapi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PHP API wrapper for NewsAPI.org. NPM automates Github releases.",
   "scripts": {
     "release": "release-it"
