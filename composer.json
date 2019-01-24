@@ -26,6 +26,7 @@
     }
   },
   "require": {
+    "php": "^7.1",
     "rmccue/requests": "^1.7"
   },
   "require-dev": {
