@@ -21,6 +21,7 @@ cache:
 install:
   # Setup the test server
   - composer install --no-interaction
+  - npm install -g snyk
   - phpenv local --unset
 
   # Environment checks
@@ -31,3 +32,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - snyk test
