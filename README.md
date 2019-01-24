@@ -32,13 +32,13 @@ Once included in your project, setup should be very straightforward.  Only requi
 
 ## Usage
 
-#### Step 1. Set Access Token 
+### Step 1. Set Access Token 
 
 ```php
 \NewsAPI\Client::setAccessToken('276537c6a3824cdd9eae393c024ff732');
 ```
 
-#### Step 2. Setup Query
+### Step 2. Setup Query
 
 Making requests to the API is done via `query` method, which accepts three parameters.  Below are a few examples.
 
@@ -66,7 +66,7 @@ $request = NewsAPI\Client::query( 'top', [ 'q' => 'Technology' ] );
 $request = NewsAPI\Client::query( 'top', [ 'category' => 'business' ] );
 ```
 
-#### Step 3. Handling Responses
+### Step 3. Handling Responses
 
 Each query returns a `Request_Response` object,  more on this [here](http://requests.ryanmccue.info/api/class-Requests_Response.html).  
 
