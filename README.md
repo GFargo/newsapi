@@ -43,9 +43,9 @@ Making requests to the API is done via `query` method, which accepts three param
 
 **`Query` parameters:**
 
-  * `(string) $endpoint` Target endpoint. Options are `top`, `everything`, and `sources`.
-  * `(array) $query_params` Query parameters passed to NewsAPI.org
-  * `(array) $request_options` Options passed to Requests library to control CURL.
+* `(string) $endpoint` Target endpoint. Options are `top`, `everything`, and `sources`.
+* `(array) $query_params` Query parameters passed to NewsAPI.org
+* `(array) $request_options` Options passed to Requests library to control CURL.
 
 **Examples:** 
 
