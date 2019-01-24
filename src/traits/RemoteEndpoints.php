@@ -2,7 +2,7 @@
 /**
  * Interface for Remote API Endpoints
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

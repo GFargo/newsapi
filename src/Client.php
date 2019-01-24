@@ -2,7 +2,7 @@
 /**
  * NewsAPI Static Proxy Class Client
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 
@@ -42,9 +42,10 @@ final class Client {
 
 	/**
 	 * Check if API access token is valid.
+	 *
 	 * @return bool
 	 */
-	public static function isAccessTokenValid() {
+	public static function isAccessTokenValid(): bool {
 		return ! empty( self::$api_token ) && is_string( self::$api_token );
 	}
 
@@ -81,7 +82,7 @@ final class Client {
 	 *
 	 * @return \Requests_Response Response object from from API request.
 	 */
-	public static function query( string $endpoint, array $query_params = [], array $request_options = [] ) {
+	public static function query( string $endpoint, array $query_params = [], array $request_options = [] ): \Requests_Response {
 		return self::getAdapter()->query( $endpoint, $query_params, $request_options );
 	}
 }

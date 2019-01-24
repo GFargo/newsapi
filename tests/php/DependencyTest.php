@@ -2,7 +2,7 @@
 /**
  * Test for library dependencies.
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

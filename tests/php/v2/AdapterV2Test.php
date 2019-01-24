@@ -2,7 +2,7 @@
 /**
  * Test V2 Adapter class.
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

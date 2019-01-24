@@ -2,7 +2,7 @@
 /**
  * Test Client Static Proxy Class
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

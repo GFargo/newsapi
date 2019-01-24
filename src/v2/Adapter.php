@@ -1,8 +1,8 @@
 <?php
 /**
- * NewsAPI PHP Wrapper
+ * NewsAPI v2 Adapter Class
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

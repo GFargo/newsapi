@@ -3,7 +3,7 @@
  * Base abstract class for API adapters.
  *
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

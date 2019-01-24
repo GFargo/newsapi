@@ -2,7 +2,7 @@
 /**
  * PHPUnit Bootstrap File.
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 

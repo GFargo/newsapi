@@ -2,7 +2,7 @@
 /**
  * Tests for RemoteAPI abstract class.
  *
- * @author  gfargo
+ * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
  */
 
