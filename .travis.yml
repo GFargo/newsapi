@@ -21,11 +21,15 @@ cache:
 install:
   # Setup the test server
   - composer install --no-interaction
-  - npm install -g snyk
   - phpenv local --unset
 
   # Environment checks
   - phpunit --version
+
+  # Install & update Snyk.io vulnerability testing
+  - npm install -g snyk
+  - snyk monitor --file=composer.lock
+  - snyk monitor --file=package.json
 
 script:
   - phpunit --coverage-clover=coverage.xml
@@ -34,6 +38,6 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
   # Snyk.io vulnerability checks
-  - snyk test --file=package-lock.json
+  - snyk test --file=package.json
   - snyk test --file=composer.lock
 
