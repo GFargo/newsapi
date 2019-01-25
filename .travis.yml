@@ -25,7 +25,7 @@ install:
 
   # Environment checks
   - phpunit --version
-  - phpcs --version
+  - vendor/bin/phpcs --version
 
   # Install & update Snyk.io vulnerability testing
   - npm install -g snyk
@@ -34,7 +34,7 @@ install:
 
 script:
   - phpunit --coverage-clover=coverage.xml
-  - phpcs -s src
+  - vendor/bin/phpcs -s src
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
