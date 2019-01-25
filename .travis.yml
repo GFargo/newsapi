@@ -34,7 +34,7 @@ install:
 
 script:
   - phpunit --coverage-clover=coverage.xml
-  - phpcs -s
+  - phpcs -s src
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
