@@ -2,12 +2,13 @@
 /**
  * PHPUnit Bootstrap File.
  *
- * @author  gfargo
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
+ * @since   0.2.0
  */
 
 // Include composer autoloader.
-include( dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php' );
+require dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 
 /**
  * NewsAPIMockTransport Test Class
@@ -15,9 +16,9 @@ include( dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php' );
  * Mock class that allows the testing of requests made by the `query` method.
  */
 class NewsAPIMockTransport implements \Requests_Transport {
-	public $code = 200;
-	public $chunked = false;
-	public $body = 'Test Body';
+	public $code        = 200;
+	public $chunked     = false;
+	public $body        = 'Test Body';
 	public $raw_headers = '';
 
 	private static $messages = [
@@ -35,8 +36,8 @@ class NewsAPIMockTransport implements \Requests_Transport {
 	];
 
 	public function request( $url, $headers = [], $data = [], $options = [] ) {
-		$status   = isset( self::$messages[ $this->code ] ) ? self::$messages[ $this->code ] : $this->code . ' unknown';
-		$response = "HTTP/1.0 $status\r\n";
+		$status    = isset( self::$messages[ $this->code ] ) ? self::$messages[ $this->code ] : $this->code . ' unknown';
+		$response  = "HTTP/1.0 $status\r\n";
 		$response .= "Content-Type: text/plain\r\n";
 		if ( $this->chunked ) {
 			$response .= "Transfer-Encoding: chunked\r\n";
@@ -51,10 +52,10 @@ class NewsAPIMockTransport implements \Requests_Transport {
 	public function request_multiple( $requests, $options ) {
 		$responses = [];
 		foreach ( $requests as $id => $request ) {
-			$handler              = new MockTransport();
-			$handler->code        = $request['options']['mock.code'];
-			$handler->chunked     = $request['options']['mock.chunked'];
-			$handler->body        = $request['options']['mock.body'];
+			$handler          = new MockTransport();
+			$handler->code    = $request['options']['mock.code'];
+			$handler->chunked = $request['options']['mock.chunked'];
+			$handler->body    = $request['options']['mock.body'];
 			$handler->raw_headers = $request['options']['mock.raw_headers'];
 			$responses[ $id ]     = $handler->request( $request['url'], $request['headers'], $request['data'], $request['options'] );
 

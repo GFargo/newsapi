@@ -2,9 +2,9 @@
 /**
  * Base abstract class for API adapters.
  *
- *
- * @author  gfargo
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
+ * @since   0.2.0
  */
 
 namespace NewsAPI;
@@ -13,5 +13,14 @@ abstract class RemoteAPI {
 	use Traits\RemoteEndpoints;
 	use Traits\RemoteHeaders;
 
-	abstract function query( string $endpoint, array $api_params = [], array $request_options = [] ): \Requests_Response;
+	/**
+	 * Query Remote
+	 *
+	 * @param string $endpoint       Slug of target remote endpoint
+	 * @param array  $apiParams      Query parameters passed to remote API
+	 * @param array  $requestOptions Options controlling how request is made to remote
+	 *
+	 * @return \Requests_Response
+	 */
+	abstract public function query( string $endpoint, array $apiParams = [], array $requestOptions = [] ): \Requests_Response;
 }
