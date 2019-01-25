@@ -2,8 +2,8 @@
 /**
  * NewsAPI Static Proxy Class Client
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI;
@@ -14,30 +14,30 @@ final class Client {
 	 *
 	 * @var string
 	 */
-	public static $api_version = 'V2';
+	public static $version = 'V2';
 
 	/**
 	 * API access token used in requests.
 	 *
 	 * @var string
 	 */
-	protected static $api_token;
+	protected static $privateKey;
 
 	/**
 	 * This is a static class, do not instantiate it
-	 *
-	 * @codeCoverageIgnore
 	 */
 	private function __construct() {
 	}
 
 	/**
-	 * Register personal API access token.
+	 * Register API access token.
 	 *
-	 * @param string $api_token
+	 * @param string $apiKey Personal API access key
+	 *
+	 * @return void
 	 */
-	public static function setAccessToken( string $api_token ) {
-		self::$api_token = $api_token;
+	public static function setAccessToken( string $apiKey ) {
+		self::$privateKey = $apiKey;
 	}
 
 	/**
@@ -46,13 +46,14 @@ final class Client {
 	 * @return bool
 	 */
 	public static function isAccessTokenValid(): bool {
-		return ! empty( self::$api_token ) && is_string( self::$api_token );
+		return ! empty( self::$privateKey ) && is_string( self::$privateKey );
 	}
 
 	/**
 	 * Returns Instance of API Adapter.
 	 *
 	 * @return RemoteAPI
+	 *
 	 * @throws \Exception
 	 */
 	public static function getAdapter(): RemoteAPI {
@@ -61,28 +62,28 @@ final class Client {
 			throw new \Exception( 'The API access token hasn\'t been set properly. Register your API access token via the `set_access_token` method. If you do not have an access token, one can be created at https://newsapi.org/account', 1 );
 		}
 
-		static $adapter = null;
+		static $adapterObj = null;
 
-		if ( null === $adapter ) {
-			$adapter_version = __NAMESPACE__ . '\\' . self::$api_version . '\\Adapter';
-			$adapter         = new $adapter_version( self::$api_token );
+		if ( null === $adapterObj ) {
+			$adapter    = __NAMESPACE__ . '\\' . self::$version . '\\Adapter';
+			$adapterObj = new $adapter( self::$privateKey );
 		}
 
-		return $adapter;
+		return $adapterObj;
 	}
 
 	/**
 	 * Query API using selected Adapter.
 	 *
-	 * @param string $endpoint
-	 * @param array  $query_params
-	 * @param array  $request_options
+	 * @param string $endpoint       Slug of target API endpoint.  Options are 'top', 'everything', and 'sources'.
+	 * @param array  $queryParams    Query parameters passed to NewsAPI.org
+	 * @param array  $requestOptions Args passed to Requests library to control CURL.
 	 *
 	 * @throws \Exception
 	 *
 	 * @return \Requests_Response Response object from from API request.
 	 */
-	public static function query( string $endpoint, array $query_params = [], array $request_options = [] ): \Requests_Response {
-		return self::getAdapter()->query( $endpoint, $query_params, $request_options );
+	public static function query( string $endpoint, array $queryParams = [], array $requestOptions = [] ): \Requests_Response {
+		return self::getAdapter()->query( $endpoint, $queryParams, $requestOptions );
 	}
 }

@@ -2,8 +2,8 @@
 /**
  * Test Client Static Proxy Class
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI\Tests;
@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 class ClientTest extends TestCase {
 	/**
 	 * Test API access token.
+	 *
 	 * @var string
 	 */
 	private $test_access_token = 'test_token';
@@ -41,6 +42,7 @@ class ClientTest extends TestCase {
 
 	/**
 	 * Test that Adapter class properly extends RemoteAPI abstract class.
+	 *
 	 * @throws \Exception
 	 */
 	public function testGetAdapter_ShouldExtendRemoteAPI() {
@@ -53,6 +55,7 @@ class ClientTest extends TestCase {
 
 	/**
 	 * Test exception is thrown when using invalid API endpoint.
+	 *
 	 * @throws \Exception
 	 */
 	public function testQuery_ShouldThrowException_WhenUsingInvalidEndpoint() {

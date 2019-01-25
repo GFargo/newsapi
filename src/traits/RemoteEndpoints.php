@@ -2,8 +2,8 @@
 /**
  * Interface for Remote API Endpoints
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI\Traits;
@@ -28,16 +28,20 @@ trait RemoteEndpoints {
 	/**
 	 * Return URL for target endpoint.
 	 *
-	 * @param $endpoint_slug
+	 * @param string $endpointSlug Key value for target URL.
 	 *
 	 * @return array|null
 	 */
-	public function getEndpointUrl( $endpoint_slug ) {
-		return isset( $this->endpoints[ $endpoint_slug ] ) ? $this->endpoints[ $endpoint_slug ] : null;
+	public function getEndpointUrl( string $endpointSlug ) {
+		return isset( $this->endpoints[ $endpointSlug ] ) ? $this->endpoints[ $endpointSlug ] : null;
 	}
 
 	/**
-	 * @param array $endpoints
+	 * Setup available remote endpoints.
+	 *
+	 * @param array $endpoints List of remote endpoints
+	 *
+	 * @return void
 	 */
 	protected function setEndpoints( array $endpoints ): void {
 		$this->endpoints = array_merge( $this->endpoints, $endpoints );

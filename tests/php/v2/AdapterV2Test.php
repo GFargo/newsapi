@@ -2,8 +2,8 @@
 /**
  * Test V2 Adapter class.
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI\Tests;
@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 class AdapterV2Test extends TestCase {
 	/**
 	 * Instance of v2 Adapter class
+	 *
 	 * @var Adapter
 	 */
 	private $adapter;
@@ -115,29 +116,29 @@ class AdapterV2Test extends TestCase {
 	 */
 	public function testBuildRequestUrl_ShouldMatchExpected_WhenUsingSameParameters() {
 		// Top business headlines from Germany.
-		$expected_url  = 'https://newsapi.org/v2/top-headlines?country=de&category=business';
-		$generated_url = $this->adapter->buildRequestUrl(
+		$expected  = 'https://newsapi.org/v2/top-headlines?country=de&category=business';
+		$generated = $this->adapter->buildRequestUrl(
 			'top',
 			[
 				'country'  => 'de',
 				'category' => 'business',
 			]
 		);
-		$this->assertEquals( $expected_url, $generated_url );
+		$this->assertEquals( $expected, $generated );
 
 		// Top headlines from BBC News.
-		$expected_url  = 'https://newsapi.org/v2/top-headlines?sources=bbc-news';
-		$generated_url = $this->adapter->buildRequestUrl(
+		$expected  = 'https://newsapi.org/v2/top-headlines?sources=bbc-news';
+		$generated = $this->adapter->buildRequestUrl(
 			'top',
 			[
 				'sources' => 'bbc-news',
 			]
 		);
-		$this->assertEquals( $expected_url, $generated_url );
+		$this->assertEquals( $expected, $generated );
 
 		// All articles mentioning Apple from yesterday, sorted by popular publishers first.
-		$expected_url  = 'https://newsapi.org/v2/everything?q=apple&from=2019-01-17&to=2019-01-17&sortBy=popularity';
-		$generated_url = $this->adapter->buildRequestUrl(
+		$expected  = 'https://newsapi.org/v2/everything?q=apple&from=2019-01-17&to=2019-01-17&sortBy=popularity';
+		$generated = $this->adapter->buildRequestUrl(
 			'everything',
 			[
 				'q'      => 'apple',
@@ -146,19 +147,19 @@ class AdapterV2Test extends TestCase {
 				'sortBy' => 'popularity',
 			]
 		);
-		$this->assertEquals( $expected_url, $generated_url );
+		$this->assertEquals( $expected, $generated );
 
 		// All named sources with English news in the US.
-		$expected_url  = 'https://newsapi.org/v2/sources?language=en&country=us';
-		$generated_url = $this->adapter->buildRequestUrl(
+		$expected  = 'https://newsapi.org/v2/sources?language=en&country=us';
+		$generated = $this->adapter->buildRequestUrl(
 			'sources',
 			[
 				'language' => 'en',
 				'country'  => 'us',
 			]
 		);
-		$this->assertEquals( $expected_url, $generated_url );
-		unset( $expected_url, $generated_url );
+		$this->assertEquals( $expected, $generated );
+		unset( $expected, $generated );
 	}
 
 	public function testQuery_ShouldReturnRequestResponseObject() {

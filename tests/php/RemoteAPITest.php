@@ -2,8 +2,8 @@
 /**
  * Tests for RemoteAPI abstract class.
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI\Tests;

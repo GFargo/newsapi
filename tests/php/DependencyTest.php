@@ -2,8 +2,8 @@
 /**
  * Test for library dependencies.
  *
- * @author  GFargo <griffen@alley.co>
  * @package NewsAPI
+ * @author  GFargo <griffen@alley.co>
  */
 
 namespace NewsAPI\Tests;
