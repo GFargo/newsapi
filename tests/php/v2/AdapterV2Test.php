@@ -4,6 +4,7 @@
  *
  * @package NewsAPI
  * @author  GFargo <griffen@alley.co>
+ * @since   0.2.0
  */
 
 namespace NewsAPI\Tests;
@@ -163,12 +164,14 @@ class AdapterV2Test extends TestCase {
 	}
 
 	public function testQuery_ShouldReturnRequestResponseObject() {
-		$transport = new \NewsAPIMockTransport();
+		$transport       = new \NewsAPIMockTransport();
 		$transport->code = 200;
 
-		$response = $this->adapter->query('everything', [], [
-			'transport' => $transport
-		]);
+		$response = $this->adapter->query('everything',
+			[],
+			[
+				'transport' => $transport
+			]);
 
 		$this->assertEquals(200, $response->status_code);
 		$this->assertEquals(0, $response->redirects);
