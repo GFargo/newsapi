@@ -25,12 +25,6 @@ final class Client {
 	protected static $privateKey;
 
 	/**
-	 * This is a static class, do not instantiate it
-	 */
-	private function __construct() {
-	}
-
-	/**
 	 * Register API access token.
 	 *
 	 * @param string $apiKey Personal API access key
